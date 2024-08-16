@@ -1,11 +1,13 @@
+//Calculate the time and space used by importing hiredis.h
+//The number of Key-Value pairs used in this test is 100000
 #include <hiredis/hiredis.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 #define len 100000
 
-int main(){
 
+int main(){
     //connect redis
     redisContext *c = redisConnect("127.0.0.1", 6379);
     if (c == NULL || c->err) {
@@ -19,10 +21,10 @@ int main(){
 
     redisReply *reply;
 
-    clock_t start, finish;
-    clock_t a,b;
-    double times;
-    double readtimes;
+    clock_t create_start, create_finish;
+    clock_t read_start, read_finish;
+    double createTime;
+    double readTime;
     srand(time(NULL));
 
     int* tempkey = malloc(len * sizeof(int));
@@ -58,12 +60,12 @@ int main(){
     b = clock();
 
     //calculate times
-    times = ((finish - start) / (double)CLOCKS_PER_SEC);
-    double avg = times/len;
-    readtimes = ((b-a)/(double)CLOCKS_PER_SEC);
-    double avgRead = readtimes/len;
+    createtime = ((create_finish - create_start) / (double)CLOCKS_PER_SEC);
+    double avgCreate = createtime/len;
+    readtime = ((read_finish - read_start) / (double)CLOCKS_PER_SEC);
+    double avgRead = readtime/len;
     printf("create 100000 pairs total time: %lf seconds\n",times);
-    printf("create average: %lf seconds\n",avg);
+    printf("create average: %lf seconds\n",avgCreate);
     printf("read 100000 keys total time: %lf seconds\n",readtimes);
     printf("read average: %lf seconds\n",avgRead);
 
