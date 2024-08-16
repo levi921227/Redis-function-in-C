@@ -1,5 +1,5 @@
-#ifndef CRUD_H
-#define CRUD_H
+#ifndef CRUD_FUN_H
+#define CRUD_FUN_H
 
 typedef struct data {
     int key;
