@@ -86,7 +86,7 @@ int main() {
             printf("3.update data\n");
             printf("4.delete data\n");
             printf("5.print all data\n");
-            printf("Please choose the action you want to do in number:");
+            printf("Please choose an option (enter the number code)");
             Data* head = NULL;
             int fn;
             char key[50];
@@ -134,7 +134,7 @@ int main() {
 
                 }
 
-                printf("Keep choosing other actions or input other number to leave\n");
+                printf("Please continue with your operation (press another number key to exit)\n");
             }
 
     }
