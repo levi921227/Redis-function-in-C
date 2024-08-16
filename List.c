@@ -204,7 +204,7 @@ int main() {
             printf("9.RPOP\n");
             printf("10.LLEN\n");
             printf("11.LRENGE\n");
-            printf("請選擇操作方式(輸入數字代號):");
+            printf("Please choose an option (enter the number code)");
             Data* head = NULL;
             int fn;
             char key[50];
@@ -289,7 +289,7 @@ int main() {
 
                 }
 
-                printf("請繼續輸入操作(按其他數字鍵離開)\n");
+                printf("Please continue with your operation (press another number key to exit)\n");
             }
 
     }
