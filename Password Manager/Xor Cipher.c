@@ -10,6 +10,16 @@ typedef struct Data {
     struct Data* prev;
 } Data;
 
+// Enumeration for operations
+typedef enum {
+    CREATE = 1,
+    READ,
+    UPDATE,
+    DELETE,
+    PRINT,
+    EXIT
+} Operation;
+
 // XOR encryption/decryption function
 void xor_encrypt_decrypt(char* str, char key) {
     for (int i = 0; str[i] != '\0'; i++) {
@@ -178,7 +188,7 @@ int main() {
     Data* head = NULL;
     load_from_file(&head, filename);
 
-    int fn;
+    Operation operation;
     char key[500], value[500];
 
     while (1) {
@@ -187,24 +197,25 @@ int main() {
         printf("3. Update data\n");
         printf("4. Delete data\n");
         printf("5. Print all data\n");
+        printf("6. Exit\n");
         printf("Please choose an option (enter the number code):\n");
         
-        if (scanf("%d", &fn) != 1) { // Check for input errors
+        if (scanf("%d", (int*)&operation) != 1) { // Check for input errors
             printf("Invalid input, exiting.\n");
             break;
         }
 
-        switch (fn) {
-            case 1:
-                printf("please enter the key (account):\n");
+        switch (operation) {
+            case CREATE:
+                printf("Please enter the key (account):\n");
                 scanf("%s", key);
-                printf("please enter the value (password):\n");
+                printf("Please enter the value (password):\n");
                 scanf("%s", value);
                 createdata(&head, key, value);
                 break;
 
-            case 2:
-                printf("please enter the key (account):\n");
+            case READ:
+                printf("Please enter the key (account):\n");
                 scanf("%s", key);
                 char* output = readdata(head, key);
                 if (output) {
@@ -215,28 +226,31 @@ int main() {
                 }
                 break;
 
-            case 3:
-                printf("please enter the key (account):\n");
+            case UPDATE:
+                printf("Please enter the key (account):\n");
                 scanf("%s", key);
-                printf("please enter the value (password):\n");
+                printf("Please enter the value (password):\n");
                 scanf("%s", value);
                 updatedata(&head, key, value);
                 break;
 
-            case 4:
-                printf("please enter the key (account):\n");
+            case DELETE:
+                printf("Please enter the key (account):\n");
                 scanf("%s", key);
                 deletedata(&head, key);
                 break;
 
-            case 5:
+            case PRINT:
                 printdata(head);
                 break;
 
-            default:
+            case EXIT:
                 printf("Exiting program...\n");
                 save_to_file(head, filename);
                 exit(0);
+
+            default:
+                printf("Invalid operation. Please try again.\n");
         }
         printf("Please continue with your operation (press another number key to exit)\n");
     }
