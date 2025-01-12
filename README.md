@@ -29,7 +29,11 @@
 - ZUNIONSTORE: 計算一個或多個 sorted-list 的聯集並存於新的 key 中
 
 ## Hash CMD
-
+針對 Hash Table 操作的命令，包含
+- HSET: 用來為 Hash Table 中的字段賦值，如果哈希表不存在，一个新的 Hash Table 被創建並進行 HSET 操作
+- HGET: 返回 Hash Table 中指定字段的值
+- HDEL: 刪除 Hash Table中的字段
+- EXPIRE: 為指定的字段指定一段過期的時間，待時間經過後便會刪除該字段
 
 ## Performance Test
 主要將 **Basic CMD** 中的功能與呼叫 Redis function 的性能做比較，比較方式為隨機產生 100000 組 key-value pairs 並分別計算 Create 和 Read 的總時間與平均時間，同時也會比較消耗的記憶體大小
