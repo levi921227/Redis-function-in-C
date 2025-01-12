@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include"CRUD.h"
+#include"basic_cmd.h"
 #define len 100000
 
 int main() {
