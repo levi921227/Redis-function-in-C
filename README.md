@@ -28,6 +28,9 @@
 - ZINTERSTORE: 計算一個或多個 sorted-list 中的交集並存於新的 sorted-list 中
 - ZUNIONSTORE: 計算一個或多個 sorted-list 的聯集並存於新的 key 中
 
+## Hash CMD
+
+
 ## Performance Test
 主要將 **Basic CMD** 中的功能與呼叫 Redis function 的性能做比較，比較方式為隨機產生 100000 組 key-value pairs 並分別計算 Create 和 Read 的總時間與平均時間，同時也會比較消耗的記憶體大小
 
